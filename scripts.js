@@ -74,14 +74,6 @@ $(document).ready(function () {
             })
     })
 
-
-
-
-
-
-
-
-
     let isDown = false
     $(document).mousedown(function () {
         isDown = true
@@ -89,21 +81,21 @@ $(document).ready(function () {
         isDown = false
     })
 
-    $('.box').hover(function () {
+    $(".rows").on("mouseover",".newBox", function () {
         if (isDown) {
-            let currentSize = $('.box').css('font-size');
-            currentSize = parseFloat(currentSize) * 1.5;
-            $(this).css('font-size', currentSize)
-        } else {
-            let currentSize = $('.box').css('font-size');
-            currentSize = 16;
-            $(this).css('font-size', currentSize)
+            console.log("hi")
+            let colorVal = document.getElementById("colors").value; 
+              $(this).css('background-color', colorVal)
         }
+    
     })
 
-    $('.col').click(function () {
-        let c = document.querySelector("#colors")
-        console.log(c.value)
+    $('.box').hover(function () {
+        if (isDown) {
+            console.log("hi")
+            let colorVal = document.getElementById("colors").value; 
+              $(this).css('background-color', colorVal)
+        } 
     })
 
 })
