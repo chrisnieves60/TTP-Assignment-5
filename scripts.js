@@ -52,16 +52,6 @@ $(document).ready(function () {
         $(this).addClass("styled"); 
     })
 
-    $('.one').click(function () {
-        console.log("Inside one - mouse clicked")
-        let c = document.querySelector('.one') 
-        c.innerText = "Hello from div 1" 
-
-        $(this).css('background-color', "red")
-        $(this).addClass("red").removeClass('blue') 
-
-    })
-
     $('.change-to-select').click(function () {
         $('.row').children().each(function () {//all children of row
          let colorVal = document.getElementById("colors").value; 
@@ -72,11 +62,25 @@ $(document).ready(function () {
     })
 
     $('.change-all').click(function(){
-        $('.row').children().each(function () {//all children of row
+        $('.row').children().each(function () {
             let colorVal = document.getElementById("colors").value; 
               $(this).css('background-color', colorVal)
         })
     })
+    $('.clear').click(function(){
+        $('.row').children().each(function () {
+             $('.col').removeAttr('style');
+             $('.col').removeClass("styled")
+            })
+    })
+
+
+
+
+
+
+
+
 
     let isDown = false
     $(document).mousedown(function () {
