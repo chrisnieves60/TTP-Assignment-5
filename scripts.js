@@ -32,12 +32,24 @@ $(document).ready(function () {
           p++;
           })
     $('.rem-row').click(function(){ //remove row
-        $('.rows').children().last().remove(); 
+        $('.rows').children().last().detach(); 
 
     })
     $('.rem-col').click(function(){ //remove col 
-        $('.rows').children().last().children().last().remove();
+        $('.rows').children().last().children().last().detach();
 
+    })
+
+    $(".rows").on("click", ".newBox", function () { //We listen for clicks on the "rows" and we evaluate whether they came from a newBox element. This will now respond to clicks from newBox elements loaded when the page loaded, as well as those that are added dynamically later.
+        let colorVal = document.getElementById("colors").value; 
+        $(this).css('background-color', colorVal)
+        $(this).addClass("styled"); 
+    });
+
+    $(".col").click(function(){ //can maybe fix this by merging with function above
+        let colorVal = document.getElementById("colors").value; 
+        $(this).css('background-color',colorVal)
+        $(this).addClass("styled"); 
     })
 
     $('.one').click(function () {
@@ -50,12 +62,20 @@ $(document).ready(function () {
 
     })
 
-    $('.change-to-yellow').click(function () {
-
-        $('.row').children().each(function () {
-            $(this).css('background-color', "yellow")
+    $('.change-to-select').click(function () {
+        $('.row').children().each(function () {//all children of row
+         let colorVal = document.getElementById("colors").value; 
+           //$(this).css('background-color', colorVal)
+           $('.col').filter(':not(.styled)').css('background-color', colorVal)
+           $(this).addClass("styled"); 
         })
+    })
 
+    $('.change-all').click(function(){
+        $('.row').children().each(function () {//all children of row
+            let colorVal = document.getElementById("colors").value; 
+              $(this).css('background-color', colorVal)
+        })
     })
 
     let isDown = false
