@@ -1,0 +1,9 @@
+.box{
+    width: 75px;
+    height: 75px;
+}
+
+.newBox{
+    height: 75px;
+    max-width: 440px;
+}
